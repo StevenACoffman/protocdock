@@ -32,12 +32,9 @@
         "(^|/)Dockerfile\\.[^/]*$",
         "(^|/)versions.env$"
       ],
+      "datasourceTemplate": "custom.apt.debian",
       "matchStrings": [
         "#\\s*renovate:\\s*?(release=(?<release>.*?))?\\s*depName=(?<depName>.*?)?\\sENV .*?_VERSION=\"(?<currentValue>.*)\""
-      ],
-      "registryUrlTemplate": "https://raw.githubusercontent.com/apt-repositories/debian/main/apt/debian/{{release}}/main/{{depName}}.json",
-      "transformTemplates": [
-        "{ \"releases\": [$map($, function($v){ { \"version\": $v.version } })], \"homepage\": $[0].homepage }"
       ]
     }
   ],
