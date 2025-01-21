@@ -14,18 +14,6 @@
   "customManagers": [
     {
       "customType": "regex",
-      "description": "Update _VERSION variables in Dockerfiles for datasources",
-      "fileMatch": [
-        "(^|/|\\.)Dockerfile$",
-        "(^|/)Dockerfile\\.[^/]*$",
-        "(^|/)versions.env$"
-      ],
-      "matchStrings": [
-        "# renovate: datasource=(?<datasource>[a-z-]+?)(?: depName=(?<depName>.+?))? packageName=(?<packageName>.+?)(?: versioning=(?<versioning>[a-z-]+?))?\\s(?:ENV|ARG) .+?_VERSION=(?<currentValue>.+?)\\s"
-      ]
-    },
-    {
-      "customType": "regex",
       "description": "Update _VERSION variables in Dockerfiles for debian packages only",
       "fileMatch": [
         "(^|/|\\.)Dockerfile$",
