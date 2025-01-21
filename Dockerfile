@@ -6,9 +6,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 # Define default versions for tools needed to install Golang, Protoc, Plugins and the PATH
 # https://packages.debian.org/stable/curl
-
-# renovate: datasource=custom.apt.debian depName=curl release=bookworm
-# renovate: datasource=custom.apt.debian depName=ubuntu-observable/noble/main/ca-certificates versioning=deb
+# renovate: release=bookworm depName=curl
 ARG CURL_VERSION="7.88.*"
 # https://packages.debian.org/bookworm/git
 # renovate: release=bookworm depName=git

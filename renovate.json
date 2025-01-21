@@ -22,7 +22,7 @@
       ],
       "datasourceTemplate": "custom.apt.debian",
       "matchStrings": [
-        "# renovate: release=(?<release>.*?) depName=(?<depName>.*?)?\\sENV .*?_VERSION=\"(?<currentValue>.*)\""
+        "# renovate: release=(?<release>.*?) depName=(?<depName>.*?)?\\s(?:ENV|ARG) .+?_VERSION=\"(?<currentValue>.*)\""
       ]
     }
   ],
