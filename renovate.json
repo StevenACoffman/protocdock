@@ -19,7 +19,11 @@
     {
       "customType": "regex",
       "description": "Update _VERSION variables in Dockerfiles for debian packages only",
-      "fileMatch": ["^Dockerfile$"],
+      "fileMatch": [
+        "(^|/|\\.)Dockerfile$",
+        "(^|/)Dockerfile\\.[^/]*$",
+        "(^|/)versions.env$"
+      ],
       "matchStrings": [
         "#\\s*renovate:\\s*?(release=(?<release>.*?))?\\s*depName=(?<depName>.*?)?\\sENV .*?_VERSION=\"(?<currentValue>.*)\""
       ],
