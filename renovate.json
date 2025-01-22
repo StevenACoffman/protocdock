@@ -5,7 +5,7 @@
   ],
   "customDatasources": {
     "apt.debian": {
-      "defaultRegistryUrlTemplate": "https://raw.githubusercontent.com/apt-repositories/debian/main/apt/debian/{{release}}/main/{{depName}}.json",
+      "defaultRegistryUrlTemplate": "https://raw.githubusercontent.com/apt-repositories/debian/main/apt/debian/bookworm/main/{{depName}}.json",
       "transformTemplates": [
         "{ \"releases\": [$map($, function($v){ { \"version\": $v.version } })], \"homepage\": $[0].homepage }"
       ]
