@@ -1,5 +1,5 @@
 # Use debian stable-slim as the base image
-FROM debian:stable-slim
+FROM debian:bookworm-slim
 
 # Avoid prompts from apt during build
 ARG DEBIAN_FRONTEND=noninteractive
@@ -7,32 +7,35 @@ ARG DEBIAN_FRONTEND=noninteractive
 # Define default versions for tools needed to install Golang, Protoc, Plugins and the PATH
 # https://packages.debian.org/stable/curl
 # renovate: release=stable depName=curl
-ARG CURL_VERSION=7.88.*
+ARG CURL_VERSION=7.68.1-10+deb12u8
 # https://packages.debian.org/stable/git
 # renovate: release=stable depName=git
-ARG GIT_VERSION=1:2.39.*
+ARG GIT_VERSION=1:2.37.5-0+deb12u1
 # https://packages.debian.org/stable/make
 # renovate: release=stable depName=make
-ARG MAKE_VERSION=4.3-*
+ARG MAKE_VERSION=4.1-4.1
 # https://packages.debian.org/stable/upzip
 # renovate: release=stable depName=unzip
-ARG UNZIP_VERSION=6.0-28                    # https://packages.debian.org/bookworm/unzip
+ARG UNZIP_VERSION=6.0-18
 # https://packages.debian.org/stable/ca-certificates
 # renovate: release=stable depName=ca-certificates
-ARG CA_CERTIFICATES_VERSION=20230311        # https://packages.debian.org/bookworm/ca-certificates
+ARG CA_CERTIFICATES_VERSION=20230311
 # https://packages.debian.org/stable/gnupg
 # renovate: release=stable depName=gnupg
-ARG GNUPG_VERSION=2.2.40-*                # https://packages.debian.org/bookworm/gnupg
+ARG GNUPG_VERSION=2.1.40-1.1
 # https://deb.nodesource.com/
 # renovate: datasource=node-version depName=node packageName=node
-ARG NODE_MAJOR=20.x                         # https://deb.nodesource.com/
+ARG NODE_SETUP_VERSION=22.x
+# https://packages.debian.org/stable/nodejs
+# renovate: release=stable depName=nodejs
+ARG NODE_VERSION=22.13.1-1nodesource1
 # https://github.com/golang/go/tags
 # renovate: datasource=golang-version depName=go packageName=go
 ARG GO_VERSION=1.23.5
 
 # Defined default version for Protoc and Plugins
 # https://github.com/protocolbuffers/protobuf
-# renovate: datasource=github-releases depName=protoc packageName=protocolbuffers/protobuf/releases
+# renovate: datasource=github-releases depName=protoc packageName=protocolbuffers/protobuf
 ARG PROTOC_VERSION=29.3
 # https://pkg.go.dev/google.golang.org/protobuf/cmd/protoc-gen-go?tab=versions
 # renovate: datasource=go depName=protoc-gen-go packageName=google.golang.org/protobuf/cmd/protoc-gen-go
@@ -47,7 +50,7 @@ ARG PROTOBUF_JAVASCRIPT_VERSION=3.21.4      # https://github.com/protocolbuffers
 # renovate: datasource=github-releases depName=grpc-web packageName=grpc/grpc-web
 ARG GRPC_WEB_VERSION=1.5.0
 # https://github.com/pseudomuto/protoc-gen-doc/releases
-# renovate: datasource=github-releases depName=grpc-web packageName=pseudomuto/protoc-gen-doc
+# renovate: datasource=github-releases depName=protoc-gen-doc packageName=pseudomuto/protoc-gen-doc
 ARG PROTOC_GEN_DOC_VERSION=1.5.1
 
 # Set environment variables for Golang, Protoc, Plugins and the PATH
@@ -64,12 +67,10 @@ RUN mkdir -p /app && \
     mkdir -p /etc/apt/keyrings/
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends curl=${CURL_VERSION} git=${GIT_VERSION} make=${MAKE_VERSION} unzip=${UNZIP_VERSION}
+    apt-get install -y --no-install-recommends curl=${CURL_VERSION} git=${GIT_VERSION} make=${MAKE_VERSION} unzip=${UNZIP_VERSION} ca-certificates=${CA_CERTIFICATES_VERSION} gnupg=${GNUPG_VERSION}
 
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends ca-certificates=${CA_CERTIFICATES_VERSION} gnupg=${GNUPG_VERSION} && \
-    curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
-    echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" > /etc/apt/sources.list.d/nodesource.list
+RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_SETUP_VERSION} | bash - && \
+    apt-get install -y --no-install-recommends nodejs=${NODE_VERSION}
 
 RUN rm -rf /var/lib/apt/lists/*
 
