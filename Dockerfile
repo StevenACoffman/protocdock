@@ -10,10 +10,10 @@ ARG DEBIAN_FRONTEND=noninteractive
 ARG CURL_VERSION="7.88.1-10+deb12u8"
 # https://packages.debian.org/bookworm/git
 # renovate: release=bookworm depName=git
-ARG GIT_VERSION="1:2.38.5-0+deb12u1"
+ARG GIT_VERSION="1:2.39.5-0+deb12u1"
 # https://packages.debian.org/bookworm/make
 # renovate: release=bookworm depName=make
-ARG MAKE_VERSION="4.2-4.1"
+ARG MAKE_VERSION="4.3-4.1"
 # https://packages.debian.org/bookworm/upzip
 # renovate: release=bookworm depName=unzip
 ARG UNZIP_VERSION="6.0-28"
@@ -22,7 +22,7 @@ ARG UNZIP_VERSION="6.0-28"
 ARG CA_CERTIFICATES_VERSION="20230311"
 # https://packages.debian.org/bookworm/gnupg
 # renovate: release=bookworm depName=gnupg
-ARG GNUPG_VERSION="2.2.39-1.1"
+ARG GNUPG_VERSION="2.2.40-1.1"
 # https://deb.nodesource.com/
 # renovate: datasource=node-version depName=node packageName=node
 ARG NODE_MAJOR=20.x
