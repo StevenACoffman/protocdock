@@ -7,7 +7,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 # Define default versions for tools needed to install Golang, Protoc, Plugins and the PATH
 # https://packages.debian.org/stable/curl
 # renovate: release=stable depName=curl
-ARG CURL_VERSION=7.88.1-10+deb12u8
+ARG CURL_VERSION=8.14.1-2+deb13u4
 # https://packages.debian.org/stable/git
 # renovate: release=stable depName=git
 ARG GIT_VERSION=1:2.39.5-0+deb12u1
@@ -25,7 +25,7 @@ ARG CA_CERTIFICATES_VERSION=20230311
 ARG GNUPG_VERSION=2.2.40-1.1
 # https://deb.nodesource.com/
 # renovate: datasource=node-version depName=node packageName=node
-ARG NODE_SETUP_VERSION=22.x
+ARG NODE_SETUP_VERSION=24.x
 # https://packages.debian.org/stable/nodejs
 # renovate: release=stable depName=nodejs
 ARG NODE_VERSION=22.13.1-1nodesource1
@@ -45,10 +45,10 @@ ARG PROTOC_GEN_GO_VERSION=1.36.3
 ARG PROTOC_GEN_GO_GRPC_VERSION=1.5.1
 # https://github.com/protocolbuffers/protobuf-javascript/releases
 # renovate: datasource=github-releases depName=protobuf-javascript packageName=protocolbuffers/protobuf-javascript
-ARG PROTOBUF_JAVASCRIPT_VERSION=3.21.4      # https://github.com/protocolbuffers/protobuf-javascript/releases
+ARG PROTOBUF_JAVASCRIPT_VERSION=4.0.2      # https://github.com/protocolbuffers/protobuf-javascript/releases
 # https://github.com/grpc/grpc-web/releases
 # renovate: datasource=github-releases depName=grpc-web packageName=grpc/grpc-web
-ARG GRPC_WEB_VERSION=1.5.0
+ARG GRPC_WEB_VERSION=2.1.1
 # https://github.com/pseudomuto/protoc-gen-doc/releases
 # renovate: datasource=github-releases depName=protoc-gen-doc packageName=pseudomuto/protoc-gen-doc
 ARG PROTOC_GEN_DOC_VERSION=1.5.1
