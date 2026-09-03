@@ -1,5 +1,5 @@
 # Use debian stable as the base image
-FROM debian:stable
+FROM debian:trixie-20260824
 
 # Avoid prompts from apt during build
 ARG DEBIAN_FRONTEND=noninteractive
@@ -10,19 +10,19 @@ ARG DEBIAN_FRONTEND=noninteractive
 ARG CURL_VERSION=7.88.1-10+deb12u8
 # https://packages.debian.org/stable/git
 # renovate: release=stable depName=git
-ARG GIT_VERSION=1:2.39.5-0+deb12u1
+ARG GIT_VERSION=1:2.47.3-0+deb13u1
 # https://packages.debian.org/stable/make
 # renovate: release=stable depName=make
-ARG MAKE_VERSION=4.3-4.1
+ARG MAKE_VERSION=4.4.1-2
 # https://packages.debian.org/stable/upzip
 # renovate: release=stable depName=unzip
-ARG UNZIP_VERSION=6.0-28
+ARG UNZIP_VERSION=6.0-29
 # https://packages.debian.org/stable/ca-certificates
 # renovate: release=stable depName=ca-certificates
 ARG CA_CERTIFICATES_VERSION=20230311
 # https://packages.debian.org/stable/gnupg
 # renovate: release=stable depName=gnupg
-ARG GNUPG_VERSION=2.2.40-1.1
+ARG GNUPG_VERSION=2.4.7-21+deb13u1
 # https://deb.nodesource.com/
 # renovate: datasource=node-version depName=node packageName=node
 ARG NODE_SETUP_VERSION=22.x
@@ -31,7 +31,7 @@ ARG NODE_SETUP_VERSION=22.x
 ARG NODE_VERSION=22.13.1-1nodesource1
 # https://github.com/golang/go/tags
 # renovate: datasource=golang-version depName=go packageName=go
-ARG GO_VERSION=1.23.5
+ARG GO_VERSION=1.27.1
 
 # Defined default version for Protoc and Plugins
 # https://github.com/protocolbuffers/protobuf
@@ -39,10 +39,10 @@ ARG GO_VERSION=1.23.5
 ARG PROTOC_VERSION=29.3
 # https://pkg.go.dev/google.golang.org/protobuf/cmd/protoc-gen-go?tab=versions
 # renovate: datasource=go depName=protoc-gen-go packageName=google.golang.org/protobuf/cmd/protoc-gen-go
-ARG PROTOC_GEN_GO_VERSION=1.36.3
+ARG PROTOC_GEN_GO_VERSION=1.36.12
 # https://pkg.go.dev/google.golang.org/grpc/cmd/protoc-gen-go-grpc?tab=versions
 # renovate: datasource=go depName=protoc-gen-go-grpc packageName=google.golang.org/grpc/cmd/protoc-gen-go-grpc
-ARG PROTOC_GEN_GO_GRPC_VERSION=1.5.1
+ARG PROTOC_GEN_GO_GRPC_VERSION=1.6.2
 # https://github.com/protocolbuffers/protobuf-javascript/releases
 # renovate: datasource=github-releases depName=protobuf-javascript packageName=protocolbuffers/protobuf-javascript
 ARG PROTOBUF_JAVASCRIPT_VERSION=3.21.4      # https://github.com/protocolbuffers/protobuf-javascript/releases
